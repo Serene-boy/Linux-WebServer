@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>图片</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .title {
+            margin-top: 60px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .image-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        img {
+            width: 66%; /* 原为60%，放大约10% */
+            max-width: 880px; /* 与比例匹配的最大宽度 */
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .music-button {
+            display: block;
+            margin: 40px auto;
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #1890ff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .music-button:hover {
+            background-color: #40a9ff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="title">Titanic Jack and Rose</div>
+
+    <div class="image-container">
+        <img src="./jack_rose.jpg" title="Titanic" alt="Titanic Jack and Rose">
+    </div>
+
+    <button class="music-button" onclick="playMusic()">点击播放音乐</button>
+
+    <audio id="bgm" loop>
+        <source src="MyHeartWillGoOn.mp3" type="audio/mpeg">
+        您的浏览器不支持音频播放。
+    </audio>
+
+    <script>
+        function playMusic() {
+            const audio = document.getElementById("bgm");
+            audio.play().catch(error => {
+                alert("播放失败，请检查音频文件是否存在或格式是否正确。");
+                console.error(error);
+            });
+        }
+    </script>
+
+</body>
+</html>

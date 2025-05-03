@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: Arial, sans-serif;
+        }
+        .title {
+            margin-top: 80px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        .option-container {
+            margin: 40px auto;
+            width: 300px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .option-container form {
+            margin-top: 20px;
+        }
+        .option-container button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #1890ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .option-container button:hover {
+            background-color: #40a9ff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="title">请选择访问内容</div>
+
+    <div class="option-container">
+        <form action="5" method="post">
+            <button type="submit">图片</button>
+        </form>
+
+        <form action="6" method="post">
+            <button type="submit">视频</button>
+        </form>
+
+        <form action="7" method="post">
+            <button type="submit">源码</button>
+        </form>
+    </div>
+
+</body>
+</html>

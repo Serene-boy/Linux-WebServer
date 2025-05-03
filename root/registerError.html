@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>重试注册</title>
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: Arial, sans-serif;
+        }
+        .register-title {
+            margin-top: 80px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        .register-form {
+            margin: 40px auto;
+            width: 300px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .register-form input,
+        .register-form button {
+            width: 100%;
+            display: block;
+            margin: 15px auto 0 auto;
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .register-form input {
+            border: 1px solid #ccc;
+        }
+        .register-form button {
+            background-color: #1890ff;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .register-form button:hover {
+            background-color: #40a9ff;
+        }
+        .register-hint {
+            margin-top: 20px;
+            font-size: 14px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="register-title">注册</div>
+
+    <div class="register-form">
+        <form action="3CGISQL.cgi" method="post">
+            <input type="text" name="user" placeholder="用户名" required>
+            <input type="password" name="password" placeholder="用户密码" required>
+            <button type="submit">注册</button>
+        </form>
+        <div class="register-hint">提示：该用户名被注册.</div>
+    </div>
+
+</body>
+</html>
