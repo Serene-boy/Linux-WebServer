@@ -23,7 +23,7 @@ Linux下C/C++轻量级Web服务器
 
 项目框架
 -------------
-![frame](F:\Zzz\tmp\25\5.1\TinyWebServer-master\root\frame.jpg)
+![frame](https://github.com/Serene-boy/Linux-WebServer/blob/main/root/frame.jpg)
 
 运行环境：
 ----------
@@ -151,23 +151,23 @@ Linux下C/C++轻量级Web服务器
 
 > * Proactor，LT + LT，21434 QPS
 
-![image-20250503163531237](C:\Users\23级硕士-张梦杰\AppData\Roaming\Typora\typora-user-images\image-20250503163531237.png)
+![image-20250503163531237](https://github.com/Serene-boy/Linux-WebServer/blob/main/root/ple1.png)
 
 > * Proactor，LT + ET，20896 QPS
 
-![image-20250503163658395](C:\Users\23级硕士-张梦杰\AppData\Roaming\Typora\typora-user-images\image-20250503163658395.png)
+![image-20250503163658395](https://github.com/Serene-boy/Linux-WebServer/blob/main/root/ple2.png)
 
 > * Proactor，ET + LT，22735 QPS
 
-![image-20250503163801943](C:\Users\23级硕士-张梦杰\AppData\Roaming\Typora\typora-user-images\image-20250503163801943.png)
+![image-20250503163801943](https://github.com/Serene-boy/Linux-WebServer/blob/main/root/pel3.png)
 
 > * Proactor，ET + ET，23068 QPS
 
-![image-20250503163857988](C:\Users\23级硕士-张梦杰\AppData\Roaming\Typora\typora-user-images\image-20250503163857988.png)
+![image-20250503163857988](https://github.com/Serene-boy/Linux-WebServer/blob/main/root/pee4.png)
 
 > * Reactor，LT + ET，13429 QPS
 
-![image-20250503164055365](C:\Users\23级硕士-张梦杰\AppData\Roaming\Typora\typora-user-images\image-20250503164055365.png)
+![image-20250503164055365](https://github.com/Serene-boy/Linux-WebServer/blob/main/root/rle5.png)
 
 > * 并发连接总数：10000
 > * 访问服务器时间：10s

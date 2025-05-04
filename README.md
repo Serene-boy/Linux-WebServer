@@ -14,16 +14,12 @@ Linux下C/C++轻量级Web服务器
 
 
 
-写在前面
-----
-* 本项目参考了游双的《Linux高性能服务器编程》和微信公众号“两猿社”的《Web服务器项目详解》
-
 
 
 
 项目框架
 -------------
-![frame](F:\Zzz\tmp\25\5.1\TinyWebServer-master\root\frame.jpg)
+![GitHub Image](https://github.com/Serene-boy/Linux-WebServer/blob/main/root/frame.jpg)
 
 运行环境：
 ----------
@@ -151,23 +147,23 @@ Linux下C/C++轻量级Web服务器
 
 > * Proactor，LT + LT，21434 QPS
 
-![image-20250503163531237](C:\Users\23级硕士-张梦杰\AppData\Roaming\Typora\typora-user-images\image-20250503163531237.png)
+![GitHub Image](https://github.com/Serene-boy/Linux-WebServer/blob/main/root/ple1.png)
 
 > * Proactor，LT + ET，20896 QPS
 
-![image-20250503163658395](C:\Users\23级硕士-张梦杰\AppData\Roaming\Typora\typora-user-images\image-20250503163658395.png)
+![GitHub Image](https://github.com/Serene-boy/Linux-WebServer/blob/main/root/ple2.png)
 
 > * Proactor，ET + LT，22735 QPS
 
-![image-20250503163801943](C:\Users\23级硕士-张梦杰\AppData\Roaming\Typora\typora-user-images\image-20250503163801943.png)
+![GitHub Image](https://github.com/Serene-boy/Linux-WebServer/blob/main/root/pel3.png)  
 
 > * Proactor，ET + ET，23068 QPS
 
-![image-20250503163857988](C:\Users\23级硕士-张梦杰\AppData\Roaming\Typora\typora-user-images\image-20250503163857988.png)
+![GitHub Image](https://github.com/Serene-boy/Linux-WebServer/blob/main/root/pee4.png)
 
 > * Reactor，LT + ET，13429 QPS
 
-![image-20250503164055365](C:\Users\23级硕士-张梦杰\AppData\Roaming\Typora\typora-user-images\image-20250503164055365.png)
+![GitHub Image](https://github.com/Serene-boy/Linux-WebServer/blob/main/root/rle5.png)
 
 > * 并发连接总数：10000
 > * 访问服务器时间：10s
@@ -181,6 +177,10 @@ Linux下C/C++轻量级Web服务器
 
 http://http://8.152.208.228:9006/
 
+
+参考资料
+----
+* 本项目参考了游双的《Linux高性能服务器编程》和微信公众号“两猿社”的《Web服务器项目详解》
 
 
 ## 联系我
