@@ -41,7 +41,7 @@ public:
 public:
     time_t expire;//绝对超时时间
     
-    void (* cb_func)(client_data *);//用于将用户连接对应的socket从epollfd上清除，同时close fd.
+    void (* cb_func)(client_data *);//用于将用户连接对应的socket从epollfd上清除，同时close fd. 这个函数指针成员在webserver.cpp中初始化
     client_data *user_data;
     util_timer *prev;
     util_timer *next;

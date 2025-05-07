@@ -121,7 +121,7 @@ void http_conn::init(int sockfd, const sockaddr_in &addr, char *root, int TRIGMo
     m_user_count++;
 
     //当浏览器出现连接重置时，可能是网站根目录出错或http响应格式出错或者访问的文件中内容完全为空
-    doc_root = root;
+    doc_root = root;//webserver类的timer函数会将当前工作目录下的root目录传递给http_conn对象的init函数
     m_TRIGMode = TRIGMode;
     m_close_log = close_log;
 
@@ -397,17 +397,17 @@ http_conn::HTTP_CODE http_conn::do_request()
     if (cgi == 1 && (*(p + 1) == '2' || *(p + 1) == '3'))// m_url:/2CGISQL.cgiPOST请求，进行登录校验  /3CGISQL.cgi POST请求，进行注册校验
     {
 
-        //根据标志判断是登录检测还是注册检测
+        //根据标志判断是登录检测还是注册检测. 实际没用到
         char flag = m_url[1];
 
         char *m_url_real = (char *)malloc(sizeof(char) * 200);
         strcpy(m_url_real, "/");
         strcat(m_url_real, m_url + 2);//m_url+2: CGISQL.cgi
         strncpy(m_real_file + len, m_url_real, FILENAME_LEN - len - 1);
-        free(m_url_real);
+        free(m_url_real);//这里的m_url_real实际没用到
 
         //将用户名和密码提取出来
-        //user=123&passwd=123
+        //user=123&password=123
         char name[100], password[100];
         int i;
         for (i = 5; m_string[i] != '&'; ++i)
@@ -570,7 +570,7 @@ bool http_conn::write()
 
             if (m_linger)
             {
-                init();
+                init();//重置连接
                 return true;
             }
             else

@@ -29,7 +29,7 @@
 class http_conn
 {
 public:
-    static const int FILENAME_LEN = 200;
+    static const int FILENAME_LEN = 200;//请求资源文件的完整路径长度（以网站逻辑根目录为起始，包含最后的文件名）
     static const int READ_BUFFER_SIZE = 2048;
     static const int WRITE_BUFFER_SIZE = 1024;
     enum METHOD
@@ -83,8 +83,8 @@ public:
         return &m_address;
     }
     void initmysql_result(connection_pool *connPool);
-    int timer_flag;
-    int improv;//这个变量的含义暂时没搞懂
+    int timer_flag;//这个变量的含义是，子线程接收用户请求数据或发送服务端响应数据返回成功或失败
+    int improv;//这个变量的含义暂时没搞懂. 这个变量是用于reactor模式下，主线程等待子线程接收完用户请求数据或者发送完服务端响应数据
 
 
 private:
@@ -124,7 +124,7 @@ private:
     int m_write_idx;//写缓冲区待发送的字节数（不包含响应体）， 或者写缓冲区待写入数据的位置.
     CHECK_STATE m_check_state;
     METHOD m_method;
-    char m_real_file[FILENAME_LEN];
+    char m_real_file[FILENAME_LEN];//客户端请求的资源文件完整路径名（以网站逻辑根目录为起始，包含最后的文件名）
     char *m_url;
     char *m_version;
     char *m_host;

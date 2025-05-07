@@ -1,6 +1,6 @@
 #include "webserver.h"
 
-WebServer::WebServer()
+WebServer::WebServer()//优化方向：加cookie实现有状态
 {
     //http_conn类对象
     users = new http_conn[MAX_FD];
@@ -9,12 +9,12 @@ WebServer::WebServer()
     char server_path[200];
     getcwd(server_path, 200);//获取当前工作目录，类似于pwd命令的效果
     char root[6] = "/root";//当前工作目录下有一个root目录
-    m_root = (char *)malloc(strlen(server_path) + strlen(root) + 1);//将当前工作目录和root目录拼接到一起
+    m_root = (char *)malloc(strlen(server_path) + strlen(root) + 1);//将当前工作目录和root目录拼接到一起，+1是为了最后补充'\0'. malloc返回结果最好判断非空
     strcpy(m_root, server_path);
-    strcat(m_root, root);
+    strcat(m_root, root);//strcat函数会自动在末尾补充'\0'
 
     //定时器
-    users_timer = new client_data[MAX_FD];
+    users_timer = new client_data[MAX_FD];//struct client_data{sockaddr_in address, int sockfd, util_timer* timer};
 }
 
 WebServer::~WebServer()
@@ -92,8 +92,8 @@ void WebServer::sql_pool()
     m_connPool->init("localhost", m_user, m_passWord, m_databaseName, 3306, m_sql_num, m_close_log);
 
     //初始化数据库读取表
-    users->initmysql_result(m_connPool);//这一行代码是什么意思？
-}
+    users->initmysql_result(m_connPool);//这一行代码是什么意思？在http_conn.cpp中定义了一个全局变量有序映射表，用于存储数据库中的账号密码，这里
+}                                       //调用initmysql_result函数将账号密码信息存入全局映射表，用以后续的注册登录校验
 
 void WebServer::thread_pool()
 {
@@ -165,7 +165,7 @@ void WebServer::timer(int connfd, struct sockaddr_in client_address)//public: ht
 
     //初始化client_data数据
     //创建定时器，设置回调函数和超时时间，绑定用户数据，将定时器添加到链表中
-    users_timer[connfd].address = client_address;
+    users_timer[connfd].address = client_address;//client_data *users_timer;
     users_timer[connfd].sockfd = connfd;
     util_timer *timer = new util_timer;
     timer->user_data = &users_timer[connfd];
@@ -198,11 +198,11 @@ void WebServer::deal_timer(util_timer *timer, int sockfd)//拼写感觉有问题
     LOG_INFO("close fd %d", users_timer[sockfd].sockfd);
 }
 
-bool WebServer::dealclinetdata()
+bool WebServer::dealclinetdata()//处理客户端连接请求
 {
     struct sockaddr_in client_address;
     socklen_t client_addrlength = sizeof(client_address);
-    if (0 == m_LISTENTrigmode)
+    if (0 == m_LISTENTrigmode)//LT
     {
         int connfd = accept(m_listenfd, (struct sockaddr *)&client_address, &client_addrlength);
         if (connfd < 0)
@@ -216,10 +216,10 @@ bool WebServer::dealclinetdata()
             LOG_ERROR("%s", "Internal server busy");
             return false;
         }
-        timer(connfd, client_address);
+        timer(connfd, client_address);//初始化客户连接，并将连接加入定时器升序链表
     }
 
-    else
+    else//ET
     {
         while (1)
         {
@@ -237,7 +237,7 @@ bool WebServer::dealclinetdata()
             }
             timer(connfd, client_address);
         }
-        return false;
+        return false;//listenfd ET模式始终会返回false
     }
     return true;
 }
